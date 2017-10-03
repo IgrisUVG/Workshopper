@@ -1,8 +1,17 @@
 var fs = require('fs');
-fs.readFile(process.argv[2], 'utf-8', function (err, data) {
+var path = require('path');
+
+var dir = process.argv[2];
+var ext = '.' + process.argv[3];
+
+fs.readdir(dir, function (err, list) {
     if (err) {
         console.error(err);
     } else {
-        console.log(data.split('\n').length - 1);
+        list.forEach(function (file) {
+            if (path.extname(file)===ext){
+                console.log(file);
+            }
+        });
     }
 });
