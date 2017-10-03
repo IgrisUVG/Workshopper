@@ -1,6 +1,9 @@
-// arr = console.log(process.argv);
+var fs = require('fs');
+var buf = fs.readFileSync(process.argv[2]);
+var str = buf.toString();
+var arr = str.split('\n');
 var res = 0;
-for (i = 2; i < process.argv.length; i++) {
-    res += Number(process.argv[i]);
+for (var i = 0; i < arr.length - 1; i++) {
+    res++;
 }
 console.log(res);
